@@ -1,0 +1,19 @@
+APPS = [
+  'org.onosproject.yang',
+]
+
+BUNDLES = [
+  '//apps/yangdemo/yangmodel:onos-apps-yangdemo-yangmodel',
+  '//apps/yangdemo/demo1:onos-apps-yangdemo-demo1',
+]
+
+onos_app(
+  app_name = 'org.onosproject.yangdemo',
+  title = 'YANG Demo App',
+  category = 'YANG Demo APP',
+  url = 'http://onosproject.org',
+  included_bundles = BUNDLES,
+  description = 'Demo YANG Application',
+  required_apps = APPS,
+)
+

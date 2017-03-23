@@ -1,0 +1,38 @@
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="1">
+    <edit-config>
+        <target>
+            <running/>
+        </target>
+        <config>
+            <l3vpn xmlns="http://www.huawei.com/netconf/vrp" format-version="1.0" content-version="1.0">
+                <l3vpncomm>
+                    <l3vpnInstances>
+                        <l3vpnInstance>
+                            <vrfName>vrf2</vrfName>
+                            <vrfDescription>huawei l3vpn</vrfDescription>
+                            <vpnInstAFs>
+                                <vpnInstAF operation="delete">
+                                    <afType>ipv4uni</afType>
+                                    <vrfRD>1:1</vrfRD>
+                                    <vpnTargets>
+                                        <vpnTarget>
+                                            <vrfRTValue>1:1</vrfRTValue>
+                                            <vrfRTType>export_extcommunity</vrfRTType>
+                                        </vpnTarget>
+                                    </vpnTargets>
+                                </vpnInstAF>
+                            </vpnInstAFs>
+                            <l3vpnIfs>
+                                <l3vpnIf>
+                                    <ifName>Ethernet 3/0/0</ifName>
+                                    <ipv4Addr>11.1.1.1</ipv4Addr>
+                                    <subnetMask>255.255.255.0</subnetMask>
+                                </l3vpnIf>
+                            </l3vpnIfs>
+                        </l3vpnInstance>
+                    </l3vpnInstances>
+                </l3vpncomm>
+            </l3vpn>
+        </config>
+    </edit-config>
+</rpc>

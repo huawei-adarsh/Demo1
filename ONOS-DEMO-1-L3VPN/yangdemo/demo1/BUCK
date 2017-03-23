@@ -1,0 +1,10 @@
+COMPILE_DEPS = [
+  '//lib:CORE_DEPS',
+  '//apps/yangdemo/yangmodel:onos-apps-yangdemo-yangmodel',
+  '//lib:onos-yang-model',
+  '//lib:onos-yang-runtime',
+]
+
+osgi_jar_with_tests(
+  deps = COMPILE_DEPS,
+)
