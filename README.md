@@ -17,6 +17,8 @@ app activate org.onosproject.yms
 app activate org.onosproject.config
 app activate org.onosproject.restconf
 app activate org.onosproject.protocols.restconfserver
+app activate org.onosproject.netconf
+app activate org.onosproject.netconfsb
 
 
 
