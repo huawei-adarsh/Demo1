@@ -3,7 +3,7 @@ URI : http://127.0.0.1:8181/onos/restconf/data/ne-l3vpn-api:devices
 
 {
 		"device": [{
-			"deviceid": "netconf:172.16.11.11:22",
+			"deviceid": "netconf:172.19.37.161:22",
 				"l3vpn": {
 					"l3vpncomm": {
 					"l3vpnInstances": {
