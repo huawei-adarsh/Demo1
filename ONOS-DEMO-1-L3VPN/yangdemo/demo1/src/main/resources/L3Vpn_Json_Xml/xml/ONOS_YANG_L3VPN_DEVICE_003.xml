@@ -24,7 +24,7 @@
                             </vpnInstAFs>
                             <l3vpnIfs>
                                 <l3vpnIf>
-                                    <ifName>Ethernet 3/0/0</ifName>
+                                    <ifName>Ethernet 3/0/4</ifName>
                                     <ipv4Addr></ipv4Addr>
                                     <subnetMask></subnetMask>
                                 </l3vpnIf>
