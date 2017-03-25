@@ -8,7 +8,7 @@
                 <l3vpncomm>
                     <l3vpnInstances>
                         <l3vpnInstance>
-                            <vrfName>vrf2</vrfName>
+                            <vrfName>vrf1</vrfName>
                             <vrfDescription>huawei l3vpn</vrfDescription>
                             <vpnInstAFs>
                                 <vpnInstAF operation="delete">
