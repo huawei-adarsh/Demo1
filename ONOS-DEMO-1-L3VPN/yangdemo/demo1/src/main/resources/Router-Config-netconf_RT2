@@ -38,13 +38,6 @@ com
 
 
 q
-interface GigabitEthernet0/0/0
-undo shutdown 
-ip address 172.16.11.12 16
-com
-
-
-q
 q
 t d
 d t 0
