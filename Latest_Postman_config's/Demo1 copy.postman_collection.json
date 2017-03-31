@@ -1,0 +1,195 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Demo1 copy",
+		"_postman_id": "0d4a7a9b-a1ba-90a5-a95e-9252588ac56c",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "RT1 create VPN",
+			"request": {
+				"url": "http://172.19.37.53:8181/onos/restconf/data/ne-l3vpn-api:devices",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic b25vczpyb2Nrcw==",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"device\": [{\n            \"deviceid\": \"netconf:172.19.37.161:22\",\n                \"l3vpn\": {\n                    \"l3vpncomm\": {\n                    \"l3vpnInstances\": {\n                        \"l3vpnInstance\": [{\n                            \"vrfName\": \"vrf1\",\n                            \"vrfDescription\": \"vrfDescription\",\n                                \"vpnInstAFs\": {\n                                    \"vpnInstAF\": [{\n                                        \"afType\": \"ipv4uni\",\n                                        \"vrfRD\": \"100:1\",\n                                            \"vpnTargets\": {\n                                                \"vpnTarget\": [{\n                                                    \"vrfRTValue\": \"100:1\",\n                                                    \"vrfRTType\": \"export_extcommunity\"\n                                                    },\n                                                    {\n                                                    \"vrfRTValue\": \"100:1\",\n                                                    \"vrfRTType\": \"import_extcommunity\"\n                                                    }\n                                                    ]\n                                            }\n                                        }]\n                                }}]\n                    }\n                    }\n                }\n            }]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "RT1 create interface",
+			"request": {
+				"url": "http://172.19.37.53:8181/onos/restconf/data/ne-l3vpn-api:devices/device=netconf:172.19.37.161:22/l3vpn/l3vpncomm/l3vpnInstances/l3vpnInstance=vrf1/l3vpnIfs",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic b25vczpyb2Nrcw==",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"l3vpnIf\": [{\n        \"ifName\": \"Ethernet 3/0/0\",\n        \"ipv4Addr\": \"10.1.1.1\",\n        \"subnetMask\": \"255.255.255.0\"\n        }]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "RT2 create VPN",
+			"request": {
+				"url": "http://172.19.37.53:8181/onos/restconf/data/ne-l3vpn-api:devices/device=netconf:172.19.37.162:22",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic b25vczpyb2Nrcw==",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n                \"l3vpn\": {\n                    \"l3vpncomm\": {\n                    \"l3vpnInstances\": {\n                        \"l3vpnInstance\": [{\n                            \"vrfName\": \"vrf1\",\n                            \"vrfDescription\": \"vrfDescription\",\n                                \"vpnInstAFs\": {\n                                    \"vpnInstAF\": [{\n                                        \"afType\": \"ipv4uni\",\n                                        \"vrfRD\": \"100:1\",\n                                            \"vpnTargets\": {\n                                                \"vpnTarget\": [{\n                                                    \"vrfRTValue\": \"100:1\",\n                                                    \"vrfRTType\": \"export_extcommunity\"\n                                                    },\n                                                    {\n                                                    \"vrfRTValue\": \"100:1\",\n                                                    \"vrfRTType\": \"import_extcommunity\"\n                                                    }\n                                                    ]\n                                            }\n                                        }]\n                                }}]\n                    }\n                    }\n                }\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "RT2 create interface",
+			"request": {
+				"url": "http://172.19.37.53:8181/onos/restconf/data/ne-l3vpn-api:devices/device=netconf:172.19.37.162:22/l3vpn/l3vpncomm/l3vpnInstances/l3vpnInstance=vrf1/l3vpnIfs",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic b25vczpyb2Nrcw==",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"l3vpnIf\": [{\n        \"ifName\": \"Ethernet 3/0/0\",\n        \"ipv4Addr\": \"10.1.1.2\",\n        \"subnetMask\": \"255.255.255.0\"\n        }]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "deviceconfig",
+			"request": {
+				"url": "http://172.19.37.53:8181/onos/v1/network/configuration",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic b25vczpyb2Nrcw==",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"devices\": {\n    \"netconf:172.19.37.161:22\": {\n      \"basic\": {\n        \"driver\": \"huawei\"\n      }\n    },\n    \"netconf:172.19.37.162:22\": {\n      \"basic\": {\n        \"driver\": \"huawei\"\n      }\n    }\n  },\n  \"apps\": {\n    \"org.onosproject.netconf\": {\n      \"devices\": [\n        {\n          \"username\": \"rootroot\",\n          \"password\": \"Root@123\",\n          \"ip\": \"172.19.37.161\",\n          \"port\": 22\n        },\n        {\n          \"username\": \"rootroot\",\n          \"password\": \"Root@123\",\n          \"ip\": \"172.19.37.162\",\n          \"port\": 22\n        }\n      ]\n    }\n  }\n}"
+				},
+				"description": "pre configurations on instance 1"
+			},
+			"response": []
+		},
+		{
+			"name": "linkconfig",
+			"request": {
+				"url": "http://172.19.37.53:8181/onos/v1/network/configuration",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic b25vczpyb2Nrcw==",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"links\" : {\n        \"netconf:172.19.37.161:22/10-netconf:172.19.37.162:22/10\" : {\n            \"basic\" : {}\n        }\n    },\n    \"apps\" : {\n        \"org.onosproject.core\" : {\n            \"core\" : {\n                \"linkDiscoveryMode\" : \"PERMISSIVE\"\n            }   \n        }\n    }\n}"
+				},
+				"description": "pre configurations on instance 1"
+			},
+			"response": []
+		},
+		{
+			"name": "deleteAll",
+			"request": {
+				"url": "http://172.19.37.53:8181/onos/restconf/data/ne-l3vpn-api:devices",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic b25vczpyb2Nrcw==",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GetAll",
+			"request": {
+				"url": "http://172.19.37.53:8181/onos/restconf/data/ne-l3vpn-api:devices",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic b25vczpyb2Nrcw==",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
