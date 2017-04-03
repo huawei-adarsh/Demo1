@@ -1,0 +1,162 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Demo2 copy",
+		"_postman_id": "dccb246e-60b9-5a0b-6734-0bfafabfee0a",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "L3VPN Service Sites Config",
+			"request": {
+				"url": "http://172.19.37.250:8181/onos/restconf/data/ietf-l3vpn-svc:l3vpn-svc/sites",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic b25vczpyb2Nrcw==",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "   {\n            \"site\":[\n                {\n                \"site-id\":\"100\",\n                \"site-network-accesses\":{\n                    \"site-network-access\":[\n                        {\n                            \"site-network-access-id\":\"500\",\n                            \"bearer\":{\n                                \"l3vpn-svc-ext:bearer-attachment\": {\n                                    \"pe-mgmt-ip\":\"172.19.37.179\"\n                                },\n                                \"requested-type\":{\n                                    \"l3vpn-svc-ext:requested-type-profile\": {\n                                        \"physical\":{\n                                            \"physical-if\":\"Ethernet3/0/0\"\n                                        }\n                                    }\n                                }\n                            },\n                           \n                            \"vpn-attachment\":{\n                                \"vpn-id\":\"vpna\",\n                                \"site-role\" :\"any-to-any-role\"\n                            },\n                           \n                            \"ip-connection\":{\n                                \"ipv4\":{\n                                \"addresses\":{\n                                    \"provider-address\":\"50.1.1.1\",\n                                    \"mask\":\"24\"\n                                }\n                                }\n                            }\n                        },\n                        {\n                            \"site-network-access-id\":\"501\",\n                            \"bearer\":{\n                                \"l3vpn-svc-ext:bearer-attachment\": {\n                                    \"pe-mgmt-ip\":\"172.19.37.180\"\n                                },\n                                \"requested-type\":{\n                                    \"l3vpn-svc-ext:requested-type-profile\": {\n                                        \"physical\":{\n                                            \"physical-if\":\"Ethernet3/0/0\"\n                                        }\n                                    }\n                                }\n                            },\n                            \n                            \"vpn-attachment\":{\n                                \"vpn-id\":\"vpna\",\n                                \"site-role\" :\"any-to-any-role\"\n                            },\n                            \n                            \"ip-connection\":{\n                                \"ipv4\":{\n                                \"addresses\":{\n                                    \"provider-address\":\"50.1.1.2\",\n                                    \"mask\":\"24\"\n                                }\n                                }\n                            }\n                        }\n                        ]\n                }\n                }\n               \n            ]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "L3VPN Service Config",
+			"request": {
+				"url": "http://172.19.37.250:8181/onos/restconf/data/ietf-l3vpn-svc:l3vpn-svc",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic b25vczpyb2Nrcw==",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{       \"vpn-services\":{\n            \"vpn-svc\":[{\n                \"vpn-id\":\"vpna\",\n                \"customer-name\":\"jan\"\n            }]\n        }\n }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "deviceconfig",
+			"request": {
+				"url": "http://172.19.37.250:8181/onos/v1/network/configuration",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic b25vczpyb2Nrcw==",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"devices\": {\n    \"netconf:172.19.37.179:22\": {\n      \"basic\": {\n        \"driver\": \"huawei\"\n      }\n    },\n    \"netconf:172.19.37.180:22\": {\n      \"basic\": {\n        \"driver\": \"huawei\"\n      }\n    }\n  },\n  \"apps\": {\n    \"org.onosproject.netconf\": {\n      \"devices\": [\n        {\n          \"username\": \"rootroot\",\n          \"password\": \"Root@123\",\n          \"ip\": \"172.19.37.179\",\n          \"port\": 22\n        },\n        {\n          \"username\": \"rootroot\",\n          \"password\": \"Root@123\",\n          \"ip\": \"172.19.37.180\",\n          \"port\": 22\n        }\n      ]\n    }\n  }\n}"
+				},
+				"description": "pre configurations on instance 1"
+			},
+			"response": []
+		},
+		{
+			"name": "linkconfig",
+			"request": {
+				"url": "http://172.19.37.250:8181/onos/v1/network/configuration",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic b25vczpyb2Nrcw==",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"links\" : {\n        \"netconf:172.19.37.179:22/10-netconf:172.19.37.180:22/10\" : {\n            \"basic\" : {}\n        }\n    },\n    \"apps\" : {\n        \"org.onosproject.core\" : {\n            \"core\" : {\n                \"linkDiscoveryMode\" : \"PERMISSIVE\"\n            }   \n        }\n    }\n}"
+				},
+				"description": "pre configurations on instance 1"
+			},
+			"response": []
+		},
+		{
+			"name": "deleteAll",
+			"request": {
+				"url": "http://172.19.37.250:8181/onos/restconf/data/ietf-l3vpn-svc:l3vpn-svc",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic b25vczpyb2Nrcw==",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GetAll",
+			"request": {
+				"url": "http://172.19.37.250:8181/onos/restconf/data/ne-l3vpn-api:devices",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic b25vczpyb2Nrcw==",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GetAll:service",
+			"request": {
+				"url": "http://172.19.37.250:8181/onos/restconf/data/ietf-l3vpn-svc:l3vpn-svc",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic b25vczpyb2Nrcw==",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
